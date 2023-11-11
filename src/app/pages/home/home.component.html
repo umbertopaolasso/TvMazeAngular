@@ -1,0 +1,46 @@
+<div class="h-auto w-full bg-slate-200 flex items-center justify-center">
+  <div
+    class="w-full p-4 min-h-screen bg-slate-200 flex flex-col gap-6 items-center justify-center"
+  >
+    <img src="https://static.tvmaze.com/images/tvm-header-logo.png" alt="" />
+    <div class="flex">
+      <input
+        [formControl]="userInputControl"
+        type="text"
+        placeholder="cerca"
+        class="bg-white px-4 py-2 rounded-l-3xl"
+        type="text"
+      />
+      <button
+        (click)="printName()"
+        class="bg-[#3d948b] px-4 py-2 text-white rounded-r-3xl"
+      >
+        cerca
+      </button>
+    </div>
+
+    <div class="w-auto p-2 flex flex-col gap-2">
+      <div *ngFor="let i of response">
+        <div
+          [routerLink]="['/details', i.show.id]"
+          class="bg-white rounded w-auto h-auto p-4 cursor-pointer flex items-start justify-center gap-4"
+        >
+          <div *ngIf="i.show.image && i.show.image.medium" class="w-1/2">
+            <img class="w-auto" src="{{ i.show.image.medium }}" alt="" />
+          </div>
+
+          <div class="w-1/2">
+            <h2>
+              <span class="text-[#3d948b] font font-semibold"> TITOLO: </span
+              >{{ i.show.name }}
+            </h2>
+            <p>
+              <span class="text-[#3d948b] font font-semibold"> LINGUA: </span>
+              {{ i.show.language }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
